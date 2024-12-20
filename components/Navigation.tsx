@@ -40,7 +40,7 @@ const Navigation = observer(() => {
 
             {userStore.isAuthenticated ? (
                 <>
-                  <li><Link href="/profile" className="hover:text-purple-500 transition-colors">Profile</Link></li>
+                  <li><Link href="/profile" className="text-white hover:text-purple-500 transition-colors">Profile</Link></li>
                   <li>
                     <button
                         onClick={handleSignOut}

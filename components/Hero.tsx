@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-gradient-to-r from-blue-950 via-purple-800 to-black">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className=" text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
