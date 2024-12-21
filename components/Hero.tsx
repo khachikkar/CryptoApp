@@ -1,8 +1,15 @@
 "use client"
 import Image from 'next/image'
 import { motion } from 'framer-motion';
+import {useUser} from "@clerk/nextjs";
 
 export default function Hero() {
+
+
+  const { user } = useUser()
+
+console.log(user?.firstName)
+
   return (
       <section className="py-20 bg-gradient-to-r from-blue-950 via-purple-800 to-black">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
@@ -13,7 +20,7 @@ export default function Hero() {
                 animate={{opacity: 1, y: 0}}    // Final position (fully visible and no vertical movement)
                 transition={{duration: 1}}      // Transition duration
             >
-              Revolutionize Your Crypto Experience with CryptoNova
+              <span className="text-purple-300">{user?.firstName || " "}</span>, Revolutionize Your Crypto Experience with CryptoNova
             </motion.h1>
             <motion.p
                 className="text-xl mb-8 text-gray-300"

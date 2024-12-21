@@ -2,7 +2,7 @@ import { Twitter, Facebook, Instagram, GitlabIcon as GitHub } from 'lucide-react
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 py-8">
+    <footer className="bg-black py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center text-gray-400">
-          <p>&copy; 2023 CryptoNova. All rights reserved.</p>
+          <p>&copy; 2024 CryptoNova. All rights reserved.</p>
         </div>
       </div>
     </footer>

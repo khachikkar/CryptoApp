@@ -33,6 +33,15 @@ const ProfilePage = observer(() => {
           <p><strong>User ID:</strong> {user?.id}</p>
         </div>
       </div>
+
+        <div className="bg-black h-14 m-2">
+
+            <button>Add a Product</button>
+
+
+
+        </div>
+
     </div>
   )
 })
