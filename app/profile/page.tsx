@@ -10,8 +10,15 @@ const ProfilePage = observer(() => {
 
     console.log(user?.fullName, "user")
 
+    const handeAddProduct = () =>{
+        console.log("handeAddProduct")
+    }
+
+
+
 
   if (!userStore.isAuthenticated) {
+
     return (
       <div>
         <Navigation />
@@ -22,21 +29,27 @@ const ProfilePage = observer(() => {
     )
   }
 
+
+
+
   return (
-    <div className="bg-gray-900 text-white h-screen">
+    <div className="bg-black text-white h-screen">
       <Navigation />
       <div className="container mx-auto mt-10">
         <h1 className="text-3xl font-bold mb-4">Welcome, {user?.fullName || 'User'}!</h1>
-        <div className="bg-gray-800 p-6 rounded-lg">
+        <div className="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
           <h2 className="text-2xl font-semibold mb-4">Your Profile</h2>
           <p><strong>Email:</strong> {user?.primaryEmailAddress?.emailAddress}</p>
           <p><strong>User ID:</strong> {user?.id}</p>
         </div>
       </div>
 
-        <div className="bg-black h-14 m-2">
+        <div className="flex justify-center h-14 m-20">
 
-            <button>Add a Product</button>
+            <button
+                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-[10px] transition-colors"
+                onClick={handeAddProduct}
+            >Add a Product +</button>
 
 
 
