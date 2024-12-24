@@ -4,14 +4,22 @@ import { useUser } from '@clerk/nextjs'
 import { observer } from 'mobx-react-lite'
 import { userStore } from '../stores/userStore'
 import Navigation from '../../components/Navigation'
+import NftForm from "@/components/NftForm";
+import Footer from "@/components/Footer";
+import {useState} from "react";
 
 const ProfilePage = observer(() => {
   const { user } = useUser()
 
     console.log(user?.fullName, "user")
 
+
+    const [showNFT, setShowNFT] = useState<boolean>(false);
+
     const handeAddProduct = () =>{
         console.log("handeAddProduct")
+        setShowNFT(prev=> !prev)
+
     }
 
 
@@ -33,7 +41,7 @@ const ProfilePage = observer(() => {
 
 
   return (
-    <div className="bg-black text-white h-screen">
+    <div className="bg-black text-white ">
       <Navigation />
       <div className="container mx-auto mt-10">
         <h1 className="text-3xl font-bold mb-4">Welcome, {user?.fullName || 'User'}!</h1>
@@ -44,17 +52,23 @@ const ProfilePage = observer(() => {
         </div>
       </div>
 
-        <div className="flex justify-center h-14 m-20">
+        <div className="flex justify-center flex-col m-20">
 
             <button
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-[10px] transition-colors"
+                className=" h-10 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-[10px] transition-colors"
                 onClick={handeAddProduct}
             >Add a Product +</button>
 
-
+            {
+                showNFT && (
+                <div>
+                    <NftForm/>
+                </div>
+                )
+            }
 
         </div>
-
+        <Footer/>
     </div>
   )
 })
