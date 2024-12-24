@@ -1,6 +1,5 @@
 "use client"
 import Image from 'next/image'
-import {one, two, tree, four} from "../lib/img/images"
 import {supabase} from "@/service/supabase";
 import {useEffect, useState} from "react";
 
@@ -53,7 +52,7 @@ export default function Marketplace() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">NFT Marketplace Preview</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {mdata && ( mdata.map((item) => (
+            {mdata ?  mdata.map((item) => (
                 <div key={item.id} className=" bg-gray-700 bg-opacity-30 rounded-lg overflow-hidden">
                   <Image
                       src={item.image_url}
@@ -67,8 +66,7 @@ export default function Marketplace() {
                     <p className="text-purple-400">{item.price} ETH</p>
                   </div>
                 </div>
-            )))}
-              No Data
+            )) : "No Data"}
           </div>
         </div>
       </section>

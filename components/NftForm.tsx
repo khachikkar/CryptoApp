@@ -25,13 +25,16 @@ const uploadFileToBucket = async ({ bucket, file }: BucketParam) => {
         throw new Error(uploadError.message);
     }
 
-    const { data, error: publicUrlError } = supabase.storage.from(bucket).getPublicUrl(fileName);
+    const { data } = await supabase.storage.from(bucket).getPublicUrl(fileName);
 
-    if (publicUrlError) {
-        throw new Error(publicUrlError.message);
+// Check if `data` is available, if not, handle the error
+    if (!data) {
+        throw new Error('Failed to retrieve public URL');
     }
 
     console.log("Generated public URL:", data.publicUrl);
+
+
     return data.publicUrl;
 };
 
@@ -90,8 +93,13 @@ const NFTForm: React.FC = () => {
 
             setSuccessMessage('NFT added successfully!');
             setFormData({ title: '', price: 0, image: null }); // Reset form
-        } catch (error: any) {
-            setErrorMessage(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setErrorMessage(error.message);
+            } else {
+                // Handle the case where the error is not an instance of Error
+                setErrorMessage('An unknown error occurred.');
+            }
         } finally {
             setLoading(false);
         }
